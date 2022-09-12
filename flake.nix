@@ -8,17 +8,13 @@
     flake-utils.lib.eachDefaultSystem (system:
       let pkgs = nixpkgs.legacyPackages.${system}; in
       rec {
-        packages = flake-utils.lib.flattenTree {
-          codium = pkgs.callPackage ./packages/codium-nixos {
+        codium = pkgs.callPackage ./packages/codium-nixos {
             extensionsFromVscodeMarketplace = pkgs.vscode-utils.extensionsFromVscodeMarketplace;
             vscodeDefault = pkgs.vscodium;
           };
-        };
-        defaultPackage = packages.codium;
-        apps.codium = flake-utils.lib.mkApp { drv = packages.codium; };
-        defaultApp = apps.codium;
-      }
 
-      #checks.${system}.integration-tests = 
+        packages.default = codium { };
+        apps.default = flake-utils.lib.mkApp { drv =  codium {}; };
+      }
     );
 }

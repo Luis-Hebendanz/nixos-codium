@@ -57,6 +57,6 @@ let
   '';
 in
 buildEnv {
-  name = "vscodeEnv";
+  name = "code";
   paths = [ code updateSettingsCmd updateLaunchCmd updateKeybindingsCmd ];
 }
