@@ -2,13 +2,10 @@
 { lib
 , buildEnv
 , writeShellScriptBin
-, extensionsFromVscodeMarketplace
-, vscodeDefault
 , writeScript
 , jq
-}:
-##User input
-{ vscode                           ? vscodeDefault
+, vscode-utils
+, vscodium
 , nixExtensions                    ? []
 , vscodeBaseDir                    ? ".vscode"
 , settings                         ? {}
@@ -16,6 +13,8 @@
 , keybindings                      ? {}
 }:
 let
+  vscode = vscodium;
+  extensionsFromVscodeMarketplace = vscode-utils.extensionsFromVscodeMarketplace;
   user-data-dir = vscodeBaseDir + "/user-data-dir";
   vscodeExtsFolderName = vscodeBaseDir + "/vscode-extensions";
 
