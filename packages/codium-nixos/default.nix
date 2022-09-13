@@ -7,7 +7,7 @@
 , vscode-utils
 , vscodium
 , nixExtensions                    ? []
-, vscodeBaseDir                    ? ".vscode"
+, vscodeBaseDir                    ? "/tmp/nixos-codium"
 , settings                         ? {}
 , launch                           ? {}
 , keybindings                      ? {}
